@@ -1,23 +1,31 @@
 #include "shaderClass.h"
 
+// Read our Shaders from file
 std::string getFileContents(const char* filename) {
+
 	std::ifstream in(filename, std::ios::binary);
+
 	if (in) {
 		std::string contents;
-		in.seekg(0, std::ios::end);
-		contents.resize(in.tellg());
-		in.seekg(0, std::ios::beg);
-		in.read(&contents[0], contents.size());
+		in.seekg(0, std::ios::end);					// Move cursor to end of file
+		contents.resize(in.tellg());				// Resize based on cursor position
+		in.seekg(0, std::ios::beg);					// Move cursor to start of file
+		in.read(&contents[0], contents.size());		// Read the contents, save the file, return string
 		in.close();
 		return contents;
 	}
+
 	throw(errno);
 }
 
+// Constructor to build the Shader Program for 2 different Shaders
 Shader::Shader(const char* vertexFile, const char* fragmentFile) {
+
+	// Assign the file contents to a string
 	std::string vertexCode = getFileContents(vertexFile);
 	std::string fragmentCode = getFileContents(fragmentFile);
 
+	// Move those file contents into a char array
 	const char* vertexSource = vertexCode.c_str();
 	const char* fragmentSource = fragmentCode.c_str();
 
@@ -50,12 +58,12 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile) {
 	glDeleteShader(fragmentShader);
 }
 
+// Tell OpenGL which Shader Program to use
 void Shader::Activate() {
-	// Tell OpenGL which Shader Program to use
 	glUseProgram(ID);
 }
 
+// Remove our Shader Program
 void Shader::Delete() {
-
 	glDeleteProgram(ID);
 }

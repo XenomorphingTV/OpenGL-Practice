@@ -8,15 +8,15 @@
 #include <iostream>
 #include <cerrno>
 
+// Read our Shaders from file
 std::string getFileContents(const char* filename);
 
 class Shader {
 public:
-	GLuint ID;
-	Shader(const char* vertexFile, const char* fragmentFile);
-
-	void Activate();
-	void Delete();
+	GLuint ID;														// Refrence ID of Shader Program
+	Shader(const char* vertexFile, const char* fragmentFile);		// Constructor to build the Shader Program for 2 different Shaders
+	void Activate();												// Tell OpenGL which Shader Program to use
+	void Delete();													// Delete our Shader Program
 };
 
 #endif

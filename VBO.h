@@ -5,12 +5,12 @@
 
 class VBO {
 public:
-	GLuint ID;
-	VBO(GLfloat* vertices, GLsizeiptr size);
+	GLuint ID;									// Refrence ID of our VBO
+	VBO(GLfloat* vertices, GLsizeiptr size);	// Constructor
 
-	void Bind();
-	void Unbind();
-	void Delete();
+	void Bind();								// Bind the VBO
+	void Unbind();								// Unbind the VBO
+	void Delete();								// Delete the VBO
 };
 
 #endif // !VBO_CLASS_H

@@ -5,12 +5,12 @@
 
 class EBO {
 public:
-	GLuint ID;
-	EBO(GLuint* indices, GLsizeiptr size);
+	GLuint ID;									// Refrence ID of our EBO
+	EBO(GLuint* indices, GLsizeiptr size);		// Constructor
 
-	void Bind();
-	void Unbind();
-	void Delete();
+	void Bind();								// Bind the EBO
+	void Unbind();								// Unbind the EBO
+	void Delete();								// Delete the EBO
 };
 
 #endif // !EBO_CLASS_H
